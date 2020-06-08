@@ -1,0 +1,20 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mysql-initdb-config
+data:
+  initdb.sql: use sampledb;
+
+    create table produkt(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    name varchar(20),
+    beschreibung varchar(100),
+    preis decimal(8,3)
+    );
+
+    create table gutschein(
+    id int AUTO_INCREMENT PRIMARY KEY,
+    code varchar(20) UNIQUE,
+    angebot decimal(8,3),
+    ablaufdatum varchar(100)
+    );

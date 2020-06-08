@@ -1,0 +1,47 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mywebserver
+  labels:
+    app: httpd
+spec:
+  replicas: 10
+  strategy:
+    type: RollingUpdate
+    rollingUpdate:
+      maxSurge: 3
+      maxUnavailable: 4
+
+  selector:
+    matchLabels:
+      app: httpd
+  # pods
+  # label should match the selector above
+  template:
+    metadata:
+      labels:
+        app: httpd
+    spec:
+      containers:
+        - name: myhttpd
+          image: httpd
+          ports:
+            - containerPort: 80
+          volumeMounts:
+            - name: demovol
+              mountPath: /data
+            - name: demo-configmap-vol
+              mountPath: /etc/config
+            - name: demo-vc
+              mountPath: /data/permanentvolume
+      volumes:
+        - name: demovol
+          hostPath:
+            path: /data
+            type: Directory
+        - name: demo-configmap-vol
+          configMap:
+            name: demo-configmap
+        - name: demo-vc
+          persistentVolumeClaim:
+            claimName: demo-pvc

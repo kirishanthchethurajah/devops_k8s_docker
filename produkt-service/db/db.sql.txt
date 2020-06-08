@@ -1,0 +1,22 @@
+use sampledb;
+
+create Table produkt(
+id int AUTO_INCREMENT,
+name varchar(20),
+beschreibung varchar(100),
+preis decimal(8,3),
+primary key(id)
+);
+
+create Table gutschein(
+id int auto_increment,
+code varchar(20),
+angebot decimal(8,3),
+ablaufdatum varchar(100),
+primary key(id)
+);
+
+select * from produkt;
+
+select * from gutschein;
+

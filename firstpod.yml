@@ -1,0 +1,17 @@
+kind: Pod
+apiVersion: v1
+# provide data about the resource
+metadata:
+  name: firstpod
+  labels:
+    app: fp
+    release: stable
+    team: red
+
+# body of the resource
+spec:
+  containers:
+    - name: db
+      image: redis
+    - name: web
+      image: httpd

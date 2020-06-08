@@ -1,0 +1,32 @@
+version: "3.3"
+services:
+  web:
+    image: httpd
+    container_name: mywebserver
+  networks:
+    - webnetwork
+  ports:
+    - "8080:80"
+  volumes:
+    # - type: bind
+    #   source: data
+    #   target: data
+    - myvol:/data
+
+networks:
+  webnetwork:
+    driver: bridge
+  dbnetwork:
+    driver: bridge
+volumes:
+  myvol:
+# alternative
+# docker run -dit  --name mywebserver -p 8080:80 httpd
+
+# default network connected it to all services
+# network must be defined outside due to external
+# networks:
+#     default:
+#         external:
+#             name:
+

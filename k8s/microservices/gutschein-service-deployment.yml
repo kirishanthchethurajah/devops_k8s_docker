@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: gutschein-app
+  labels:
+    app: gutschein-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: gutschein-app
+    template:
+      metadata:
+        name: gutschein-app
+        labels:
+          app: gutschein-app
+      spec:
+        containers:
+          - name: gutschein-app
+            image: kiranowhere/gutschein-app

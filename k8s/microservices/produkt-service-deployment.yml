@@ -1,0 +1,20 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: produkt-app
+  labels:
+    app: produkt-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: produkt-app
+    template:
+      metadata:
+        name: produkt-app
+        labels:
+          app: produkt-app
+      spec:
+        containers:
+          - name: produkt-app
+            image: kiranowhere/produkt-app

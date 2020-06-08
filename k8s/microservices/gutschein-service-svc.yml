@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: gutschein-app-service
+  labels:
+    app: gutschein-app
+spec:
+  type: NodePort
+  ports:
+    - port: 9091
+      targetPort: 9091
+      nodePort: 30002
+  selector:
+    app: gutschein-app
